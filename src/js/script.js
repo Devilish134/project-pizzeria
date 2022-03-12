@@ -59,6 +59,7 @@
       thisProduct.data = data;
 
       thisProduct.renderInMenu();
+      thisProduct.initAccordion();
 
       console.log('new Product', thisProduct);
     }
@@ -77,6 +78,26 @@
 
       /*add element to menu*/
       menuContainer.appendChild(thisProduct.element);
+    }
+    
+    initAccordion(){
+      const thisProduct = this;
+    
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickableTrigger = select.menuProduct.clickable;
+    
+      /* START: add event listener to clickable trigger on event click */
+      clickableTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        const activeProducts = document.querySelectorAll(select.all.menuProducts);
+        /* if there is active product and it's not thisProduct.element, remove class active from it */
+        for(let activeProduct of activeProducts){
+          if(activeProduct != thisProduct.element) {
+            activeProduct.classList.remove('active');
+          } else thisProduct.element.classList.toggle('active'); /* <-- toggle active class on thisProduct.element */
+        }
+      });
     }
   }
 
