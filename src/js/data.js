@@ -29,6 +29,16 @@ dataSource.products = {
           macchiato : {label: 'Macchiato ', price: 1},
         },
       },
+      sandwich: {
+        label: 'Toppings',
+        type: 'checkboxes',
+        options: {
+          tomato: {label: 'Tomato', price: 2},
+          cheese: {label: 'Cheese', price: 3},
+          ham: {label: 'Ham', price: 1},
+          butter : {label: 'Butter', price: 3, default: true},
+        },
+      },  
     },
   },
   pizza: {
@@ -111,5 +121,4 @@ dataSource.products = {
       },
     },
   },
-
 };
