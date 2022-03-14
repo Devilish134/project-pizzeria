@@ -59,9 +59,10 @@
       thisProduct.data = data;
 
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
-
-      console.log('new Product', thisProduct);
+      thisProduct.initOrderForm();
+      thisProduct.processOdrer();
     }
 
     renderInMenu(){
@@ -93,11 +94,8 @@
     initAccordion(){
       const thisProduct = this;
     
-      /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-    
       /* START: add event listener to clickable trigger on event click */
-      clickableTrigger.addEventListener('click', function(event) {
+      thisProduct.accordionTrigger.addEventListener('click', function (event) {
         event.preventDefault();
         const activeProducts = document.querySelectorAll(select.all.menuProducts);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
@@ -108,12 +106,63 @@
         }
       });
     }
+
+    initOrderForm(){
+      const thisProduct = this;
+
+      thisProduct.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisProduct.processOdrer();
+      });
+
+      for(let input of thisProduct.formInputs){
+        input.addEventListener('change', function(){
+          thisProduct.processOdrer();
+        });
+      }
+
+      thisProduct.cartButton.addEventListener('click', function(event){
+        event.preventDefault;
+        thisProduct.processOdrer;
+      });
+    }
+
+    processOdrer(){
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      
+      // set price to default price
+      let price = thisProduct.data.price;
+
+      // for every category (param)...
+      for(let paramId in thisProduct.data.params) {
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+
+        // for every option in this category
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+          
+          const productSelect = formData[paramId].includes(optionId);
+          if(productSelect === true && option.default !== true){
+            const priceOption = option.price;
+            price += priceOption;
+          } else if(productSelect !== true && option.default === true){
+            const priceOption = option.price;
+            price -= priceOption;
+          }
+        }  
+      }
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;          
+    } 
   }
 
   const app = {
     initMenu: function(){
       const thisApp = this;
-      console.log('thisApp.data:', thisApp.data);
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
       }
@@ -127,11 +176,6 @@
 
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
