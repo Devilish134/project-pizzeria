@@ -40,13 +40,13 @@
     },
   };
 
-  const settings = {
+  /*const settings = {
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
     }
-  };
+  };*/
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -62,7 +62,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.processOdrer();
+      thisProduct.processOrder();
     }
 
     renderInMenu(){
@@ -89,6 +89,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
     
     initAccordion(){
@@ -112,22 +113,22 @@
 
       thisProduct.form.addEventListener('submit', function(event){
         event.preventDefault();
-        thisProduct.processOdrer();
+        thisProduct.processOrder();
       });
 
       for(let input of thisProduct.formInputs){
         input.addEventListener('change', function(){
-          thisProduct.processOdrer();
+          thisProduct.processOrder();
         });
       }
 
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault;
-        thisProduct.processOdrer;
+        thisProduct.processOrder;
       });
     }
 
-    processOdrer(){
+    processOrder(){
       const thisProduct = this;
 
       const formData = utils.serializeFormToObject(thisProduct.form);
@@ -144,15 +145,31 @@
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
+
+          const categorySelected = formData.hasOwnProperty(paramId);
+          const thisImage  = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+
+          if(categorySelected === true && thisImage !== null){
           
-          const productSelect = formData[paramId].includes(optionId);
-          if(productSelect === true && option.default !== true){
-            const priceOption = option.price;
-            price += priceOption;
-          } else if(productSelect !== true && option.default === true){
-            const priceOption = option.price;
-            price -= priceOption;
-          }
+            const productSelect = formData[paramId].includes(optionId);
+
+            thisImage.classList.add(classNames.menuProduct.imageVisible);
+
+            if(productSelect === true && option.default !== true){
+              const priceOption = option.price;
+              price += priceOption;
+
+            } else if(productSelect !== true && option.default === true && thisImage !== null){
+              const priceOption = option.price;
+              price -= priceOption;
+              
+              thisImage.classList.remove(classNames.menuProduct.imageVisible);
+
+            } else if(productSelect !== true && option.default !== true){
+
+              thisImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          } 
         }  
       }
       // update calculated price in the HTML
