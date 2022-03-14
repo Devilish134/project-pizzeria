@@ -30,7 +30,7 @@ dataSource.products = {
         },
       },
       sandwich: {
-        label: 'Toppings',
+        label: 'Sandwich Toppings',
         type: 'checkboxes',
         options: {
           tomato: {label: 'Tomato', price: 2},
