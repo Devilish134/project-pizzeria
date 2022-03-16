@@ -151,25 +151,29 @@
           const categorySelected = formData.hasOwnProperty(paramId);
           const thisImage  = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
 
-          if(categorySelected === true && thisImage !== null){
-          
-            const productSelect = formData[paramId].includes(optionId);
-
+          if (thisImage) {
             thisImage.classList.add(classNames.menuProduct.imageVisible);
+          }
 
-            if(productSelect === true && option.default !== true){
+          if(categorySelected){
+            const productSelect = formData[paramId].includes(optionId);
+            
+            if(productSelect && !option.default){
               const priceOption = option.price;
               price += priceOption;
 
-            } else if(productSelect !== true && option.default === true && thisImage !== null){
+            } else if(!productSelect && option.default){
               const priceOption = option.price;
               price -= priceOption;
-              
-              thisImage.classList.remove(classNames.menuProduct.imageVisible);
 
-            } else if(productSelect !== true && option.default !== true){
+              if (thisImage) {
+                thisImage.classList.remove(classNames.menuProduct.imageVisible);
+              }
 
-              thisImage.classList.remove(classNames.menuProduct.imageVisible);
+            } else if(!productSelect && !option.default){
+              if (thisImage) {
+                thisImage.classList.remove(classNames.menuProduct.imageVisible);
+              }
             }
           } 
         }  
