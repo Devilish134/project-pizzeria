@@ -38,7 +38,7 @@ dataSource.products = {
           ham: {label: 'Ham', price: 1},
           butter : {label: 'Butter', price: 3, default: true},
         },
-      },  
+      },
     },
   },
   pizza: {
