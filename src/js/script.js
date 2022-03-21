@@ -455,7 +455,7 @@
         totalPrice: thisCart.totalPrice,
         subtotalPrice: thisCart.subtotalPrice,
         totalNumber: thisCart.totalNumber,
-        deliveryFee: thisCart.DeliveryFee,
+        deliveryFee: thisCart.deliveryFee,
         products: []
       };
 
