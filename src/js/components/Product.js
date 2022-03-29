@@ -144,7 +144,7 @@ class Product{
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        Product: thisProduct.prepareCartProduct(),
+        product: thisProduct.prepareCartProduct(),
       },
     });
 
