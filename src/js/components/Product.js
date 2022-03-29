@@ -15,6 +15,7 @@ class Product{
     thisProduct.initAmountWidget();
     thisProduct.processOrder();
     thisProduct.prepareCartProduct();
+    thisProduct.prepareCartProductParams();
   }
 
   renderInMenu(){
