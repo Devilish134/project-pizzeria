@@ -1,5 +1,5 @@
 import BaseWidget from '../components/BaseWidget.js';
-import utils from '../utils.js';
+import {utils} from '../utils.js';
 import {select, settings} from '../settings.js';
 
 class DatePicker extends BaseWidget{
@@ -12,7 +12,6 @@ class DatePicker extends BaseWidget{
   }
   initPlugin(){
     const thisWidget = this;
-
     thisWidget.minDate = new Date();
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
     // eslint-disable-next-line no-undef

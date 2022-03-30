@@ -47,6 +47,8 @@ class BaseWidget{
     const thisWidget = this;
 
     thisWidget.dom.wrapper.innerHTML = thisWidget.value;
+    thisWidget.dom.select.widgets.datePicker.wrapper.innerHTML = thisWidget.value;
+    thisWidget.dom.select.widgets.hourPicker.wrapper.innerHTML = thisWidget.value;
   }
 
   announce(){
