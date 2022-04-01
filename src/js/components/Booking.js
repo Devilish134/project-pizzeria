@@ -145,7 +145,6 @@ class Booking{
     const clickedTable = event.target;
 
     if(clickedTable.classList.contains(classNames.booking.tableBooked)){
-      console.log('table is booked');
       return;
     } else {
       if(!clickedTable.classList.contains(classNames.booking.tableBooked)) {
@@ -196,8 +195,9 @@ class Booking{
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
 
-    thisBooking.dom.wrapper.addEventListener('updated', function(){
+    thisBooking.dom.wrapper.addEventListener('updated', function(event){
       thisBooking.updateDOM();
+      thisBooking.initTables(event);
     });
     thisBooking.dom.floorPlan.addEventListener('click', function(event){
       thisBooking.initTables(event);
