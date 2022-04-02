@@ -131,27 +131,21 @@ class Booking{
       } else {
         table.classList.remove(classNames.booking.tableBooked);
       }
-
-      if(!allAvailable && thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)){
-        table.classList.add(classNames.booking.tableBooked);
-      } else {
-        table.classList.remove(classNames.booking.tableBooked);
-      }
     }
   }
 
-  initTables(event) {
+  initTables(event){
     const thisBooking = this;
     const clickedTable = event.target;
 
     if(clickedTable.classList.contains(classNames.booking.tableBooked)){
       return;
     } else {
-      if(!clickedTable.classList.contains(classNames.booking.tableBooked)) {
+      if(!clickedTable.classList.contains(classNames.booking.tableSelected)){
         thisBooking.tableNumber = clickedTable.getAttribute(settings.booking.tableIdAttribute); 
       }
       thisBooking.removeSelected(clickedTable);
-      clickedTable.classList.toggle(classNames.booking.tablePicked); 
+      clickedTable.classList.toggle(classNames.booking.tablePicked);  
     }
     thisBooking.tableId = clickedTable.getAttribute(settings.booking.tableIdAttribute);
   }
@@ -162,11 +156,11 @@ class Booking{
 
     for(let table of thisBooking.dom.tables){
       const tableId = table.getAttribute(settings.booking.tableIdAttribute);
-      if(tableId === clickedElementId){
-        return;
-      } else if (table.classList.contains(classNames.booking.tablePicked)){
-        table.classList.remove(classNames.booking.tablePicked);
+      if (tableId === clickedElementId){
+        console.log('tableId', tableId);
       }
+      else if(table.classList.contains(classNames.booking.tablePicked))
+        table.classList.remove(classNames.booking.tablePicked);
     }
   }
   
