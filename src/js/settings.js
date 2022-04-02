@@ -44,6 +44,10 @@ export const select = {
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
     floorPlan: '.floor-plan',
+    phone: 'input[name="phone"]',
+    adress: 'input[name="address"]',
+    starters: '.booking-form [name="starter"]',
+    form:'.order-confirmation [type="submit"]',
   },
   nav: {
     links: '.main-nav a',
@@ -101,9 +105,9 @@ export const settings = {
   db: {
     url: '//localhost:3131',
     products: 'products',
-    orders: 'orders',
+    orders: 'order',
     bookings: 'booking',
-    events: 'event',
+    events: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',

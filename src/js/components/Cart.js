@@ -105,32 +105,36 @@ class Cart{
 
   sendOrder(){
     const thisCart = this;
-
     const url = settings.db.url + '/' + settings.db.orders;
 
     const payload = {
       address: thisCart.dom.address.value,
       phone: thisCart.dom.phone.value,
-      totalPrice: thisCart.totalPrice,
-      subtotalPrice: thisCart.subtotalPrice,
-      totalNumber: thisCart.totalNumber,
-      deliveryFee: thisCart.deliveryFee,
-      products: []
+      totalPrice : thisCart.totalPrice,
+      subtotalPrice : thisCart.subtotalPrice,
+      totalNumber : thisCart.totalNumber,
+      deliveryFee : settings.cart.defaultDeliveryFee,
+      products : [],
     };
-
+    
     for(let prod of thisCart.products) {
       payload.products.push(prod.getData());
     }
-
+    console.log(payload);
     const options = {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
     };
-
-    fetch(url, options);
+      
+    fetch(url,options)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
   }
 }
 

@@ -225,7 +225,7 @@
           }
        }
     ],
-    "event": [
+    "events": [
       {
         "id": 1,
         "date": "2022-04-07",
@@ -278,15 +278,7 @@
       }
     ],
     "booking": [
-      {
-         "id": 5,
-         "date": "2022-04-01",
-         "hour": "18:00",
-         "table": 2,
-         "duration": 2,
-         "ppl": 3,
-         "starters": ["lemonWater"]
-       }
+       
     ],
     "order": [
         
