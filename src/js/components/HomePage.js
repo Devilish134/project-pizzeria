@@ -1,16 +1,20 @@
+import {templates} from '../settings.js';
 
 class HomePage{
   constructor(element){
-    const thisHompage = this;
+    const thisHomePage = this;
 
+    thisHomePage.render(element);
   }
+    
+    
   render(element){
-    const thisHompage = this;
-
+    const thisHomePage = this;
+    
     const generatedHTML = templates.homeWidget();
-    thisHompage.dom = {};
-    thisHompage.dom.wrapper = element;
-    thisHompage.dom.wrapper.innerHTML = generatedHTML;
+    thisHomePage.dom = {};
+    thisHomePage.dom.wrapper = element;
+    thisHomePage.dom.wrapper.innerHTML = generatedHTML;
   }
 }
 

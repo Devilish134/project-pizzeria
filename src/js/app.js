@@ -102,8 +102,8 @@ const app = {
   initHomePage: function(){
     const thisApp = this;
 
-    thisApp.homeCont = document.querySelector(select.containerOf.home);
-    thisApp.home = new HomePage(thisApp.homeCont);
+    const homePage = document.querySelector(select.containerOf.home);
+    thisApp.home = new HomePage(homePage);
   },
 
   init: function(){
