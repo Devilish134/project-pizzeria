@@ -63,6 +63,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -70,6 +73,123 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+  <script id="template-home-page" type="text/x-handlebars-template">
+    <div class="home-widget">
+      <div class="home-buttons">
+        <div class="home-form">
+          <div class="order-online">
+            <div class="text">
+              <a class="link" href="#order">
+                <h1>Order Online</h1>
+                <p>delicious food delivery to your door</p>
+              </a>
+            </div>
+            <img class="order-image" src="images/assets/pizza-1.jpg">
+          </div>
+          <div class="book-table">
+            <div class="text">
+              <a class="link" href="#booking">
+                <h1>BOOK A TABLE</h1>
+                <p>Delicius food in friendly environment </p>
+              </a>
+            </div>
+            <img class="order-image" src="images/home/pizza-2.jpg">
+          </div>
+          <div class="opening-hours">
+            <h1>OPENING HOURS</h1>
+            <p>Monday to Sunday, 12PM - - 11PM</p>
+          </div>
+        </div>  
+      </div>
+      <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+        <div class="carousel-item active">
+          <img class="carousel-image" src="images/assets/pizza-3.jpg">
+          <div class="carousel-captation">
+            <h3>Delicious food!</h3>
+            <h4>The food in this restaurant is the best! Highly Recommend!</h4>
+          </div>
+        </div>
+        <div class="=carousel-item">
+          <img class="carousel-image" src="images/assets/pizza-3.jpg">
+          <div class="carousel-captation">
+            <h3>Best Place EVER!</h3>
+            <h4>This pizzeria have the best pizza and environment in town! 
+            On top of that their service is very friendly.
+            </h4>
+          </div>
+        </div> 
+        <div class="=carousel-item">
+          <img class="carousel-image" src="images/assets/pizza-3.jpg">
+          <div class="carousel-captation">
+            <h3>Loved It!</h3>
+            <h4>I was in there for the fierst time through friend recommendation. 
+            I'm very thankful for that :)
+            </h4>
+          </div>
+        </div>      
+      </div>
+      <div class="gallery">
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-4.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-5.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-6.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-7.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-8.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="gallery-item">
+            <img class="gallery-image" src="images/assets/pizza-9.jpg">
+            <ul class="gallery-icon">
+              <li><a><i class="fas fa-heart"></i></a></li>
+              <li><a><i class="fas fa-share"></i></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <a href="#" class="footer">See us on Facebook!</a>
+      </footer>
+    </div>
+  </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
     <li>

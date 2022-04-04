@@ -100,7 +100,6 @@ class Booking{
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];
       }
-      console.log(thisBooking.booked[date][hourBlock]);
   
       thisBooking.booked[date][hourBlock].push(table);
     }
