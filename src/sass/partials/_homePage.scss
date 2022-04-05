@@ -1,3 +1,5 @@
+
+/*main*/
 #pages {
   > * {
     display: none;
@@ -18,7 +20,109 @@
 }
 
 .home-widget{
-  max-width: 500px;
-  margin: 0 auto;
+  margin: 5px auto;
+  max-width: 800px;
   padding-top: 10px;
+}
+
+.home-form{
+  display: flex;
+  z-index: 10;
+  text-align: center;
+  margin: 5px auto;
+  padding-top: 56px;
+}
+
+.text{
+  display: flex;
+  position: absolute;
+  text-align: center;
+  margin: 0 65px;
+  z-index: 6;
+  line-height: 8px;
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  h1{
+    font-size: 28px;
+    margin-top: 60px;
+  }
+  p{
+    opacity: 0;
+
+    &:hover{
+      opacity: 1;
+      transition-duration: 1s;
+    }
+  }
+}
+
+.order-image{
+  position: relative;
+  object-fit: cover;
+  margin-right: 5px;
+  width: 377px;
+  height: 150px;
+}
+
+.opening-hours {
+  position: relative;
+  height: 85px;
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  background-color: #e17055;
+  margin-bottom: auto;
+  color: white;
+  object-fit: cover;
+  padding-left: 5px;
+    
+  h1{
+    margin-top: 10px;
+    padding-top: 5px;
+    position: absolute;
+    color: white;  
+  }
+
+  p{
+    margin-top: 10px;
+    padding-top: 40px;
+    position: relative;
+    color: white;
+    font-size: 15px;
+  }
+}
+
+/*carousel*/
+.main-carousel{
+  padding-top: 76px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-captation{
+  margin-left: 40px;
+  margin-top: 50px;
+  text-align: left;
+  color: black;
+  background: $color-light;
+}
+
+.carousel-item  {
+  width: 100%;
+  height: 250px;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  background: $color-light;
+  
+  .carousel-image {
+    margin: 20px;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    float: left;
+    border-radius: 5px;
+  }
 }
