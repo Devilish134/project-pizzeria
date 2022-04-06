@@ -1,4 +1,6 @@
-import {templates} from '../settings.js';
+/* global Flickity */ // eslint-disable-line no-unused-vars
+
+import {templates, classNames, select} from '../settings.js';
 
 class HomePage{
   constructor(element){
@@ -6,6 +8,7 @@ class HomePage{
 
     thisHomePage.render(element);
     thisHomePage.initPlugin();
+    thisHomePage.initPage();
   }
     
     
@@ -21,7 +24,7 @@ class HomePage{
   initPlugin(){
     const elem = document.querySelector('.main-carousel');
 
-    const flkty = new Flickity(elem, {
+    new Flickity(elem, {
       cellAlign: 'left',
       contain: true,
       autoPlay: 3000,
@@ -29,6 +32,42 @@ class HomePage{
       prevNextButtons: false,
       draggable: '>1',
     });
+  }
+
+  activatePage(pageId){
+    const thisHomePage = this;
+
+    thisHomePage.pages = document.querySelector(select.containerOf.pages).children;
+    thisHomePage.navLinks = document.querySelectorAll(select.nav.links);
+
+    for(let page of thisHomePage.pages){
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+    }
+
+    for(let link of thisHomePage.navLinks){
+      link.classList.toggle(
+        classNames.nav.active, 
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
+  }
+
+  initPage(){
+    const thisHomePage = this;
+
+    thisHomePage.links = document.querySelectorAll('.link');
+
+    for(let link of thisHomePage.links){
+      link.addEventListener('click', function(event){
+        event.preventDefault();
+        const clickedElement = this;
+
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+        thisHomePage.activatePage(id);
+        window.location.hash = '#/' + id;
+      });
+    }
   }
 }
 

@@ -25,6 +25,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 .home-buttons{
   padding-bottom: 42px;
 }
@@ -53,6 +54,14 @@
   h1{
     font-size: 28px;
     margin-top: 60px;
+    transform: translate(-0%, 20%);
+        
+    &:hover{
+      transform: translate(0%, -25%);
+      opacity: 0.5;
+      transition-duration: 1s;
+      color: #8ba1ee;
+    }
   }
   
   p{
@@ -89,14 +98,12 @@
     margin-top: 10px;
     padding-top: 5px;
     position: absolute;
-    color: white;  
   }
 
   p{
     margin-top: 10px;
     padding-top: 40px;
     position: relative;
-    color: white;
     font-size: 15px;
   }
 }
@@ -197,7 +204,7 @@
     &:hover{
       color: red;
       font-size: 32px;
-      transition: 1s;
+      transition: 1.5s;
     }
   }
   
@@ -207,7 +214,7 @@
     &:hover{
       color: rgb(4, 211, 97);
       font-size: 32px;
-      transition: 1s;
+      transition: 1.5s;
     }
   }
 }
